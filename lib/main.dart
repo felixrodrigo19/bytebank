@@ -22,28 +22,30 @@ class TransferList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: const [
-        Card(
-          child: ListTile(
-            leading: Icon(Icons.monetization_on),
-            title: Text('100.0'),
-            subtitle: Text('1000.0'),
-          ),
-        ),
-        Card(
-          child: ListTile(
-            leading: Icon(Icons.monetization_on),
-            title: Text('300.0'),
-            subtitle: Text('1000.0'),
-          ),
-        ),
-        Card(
-          child: ListTile(
-            leading: Icon(Icons.monetization_on),
-            title: Text('200.0'),
-            subtitle: Text('1000.0'),
-          ),
-        ),
+        ItemsListTransfers('200.0', '1000.0'),
+        ItemsListTransfers('100.0', '1000.0'),
+        ItemsListTransfers('300.0', '1000.0'),
+        ItemsListTransfers('800.0', '1000.0'),
       ],
+    );
+  }
+}
+
+class ItemsListTransfers extends StatelessWidget {
+  final String transferValue;
+  final String accountValue;
+
+  // ignore: use_key_in_widget_constructors
+  const ItemsListTransfers(this.transferValue, this.accountValue);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        leading: const Icon(Icons.monetization_on),
+        title: Text(transferValue),
+        subtitle: Text(accountValue),
+      ),
     );
   }
 }
