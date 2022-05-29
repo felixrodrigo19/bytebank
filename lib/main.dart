@@ -21,31 +21,37 @@ class TransferList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [
-        ItemsListTransfers('200.0', '1000.0'),
-        ItemsListTransfers('100.0', '1000.0'),
-        ItemsListTransfers('300.0', '1000.0'),
-        ItemsListTransfers('800.0', '1000.0'),
+      children: [
+        ItemsListTransfers(Transfer(100.0, 1000)),
+        ItemsListTransfers(Transfer(500.0, 1050)),
+        ItemsListTransfers(Transfer(100.0, 5000)),
+        ItemsListTransfers(Transfer(700.0, 5000)),
       ],
     );
   }
 }
 
 class ItemsListTransfers extends StatelessWidget {
-  final String transferValue;
-  final String accountValue;
+  final Transfer _transfer;
 
   // ignore: use_key_in_widget_constructors
-  const ItemsListTransfers(this.transferValue, this.accountValue);
+  const ItemsListTransfers(this._transfer);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
         leading: const Icon(Icons.monetization_on),
-        title: Text(transferValue),
-        subtitle: Text(accountValue),
+        title: Text(_transfer.transferValue.toString()),
+        subtitle: Text(_transfer.accountNumber.toString()),
       ),
     );
   }
+}
+
+class Transfer {
+  final double transferValue;
+  final int accountNumber;
+
+  Transfer(this.transferValue, this.accountNumber);
 }
